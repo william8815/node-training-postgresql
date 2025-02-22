@@ -191,12 +191,10 @@ const requestListener = async (req, res) => {
     res.writeHead(200, headers)
     res.end()
   } else {
-    res.writeHead(404, headers)
-    res.write(JSON.stringify({
-      status: "failed",
+    handleErrorResponse(res, {
+      statusCode: 404,
       message: "無此網站路由"
-    }))
-    res.end()
+    })
   }
 }
 
